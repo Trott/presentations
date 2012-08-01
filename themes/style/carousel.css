@@ -1,0 +1,35 @@
+.carousel .deck-before {
+	-webkit-transform: translate3d(-400%, 0, 0);
+ 	-moz-transform: translate(-400%, 0);
+ 	-ms-transform: translate(-400%, 0);
+ 	-o-transform: translate(-400%, 0);
+ 	transform: translate3d(-400%, 0, 0);
+ 	height:0;
+}
+
+.carousel .deck-after {
+	-webkit-transform: translate3d(400%, 0, 0);
+ 	-moz-transform: translate(400%, 0);
+ 	-ms-transform: translate(400%, 0);
+ 	-o-transform: translate(400%, 0);
+ 	transform: translate3d(400%, 0, 0);
+ 	height:0;
+}
+
+.carousel .deck-next {
+ 	-webkit-transform: translate3d(200%, 0, 0);
+ 	-moz-transform: translate(200%, 0);
+ 	-ms-transform: translate(200%, 0);
+ 	-o-transform: translate(200%, 0);
+ 	transform: translate3d(200%, 0, 0);
+ 	height:0;
+}
+
+.carousel .deck-previous {
+	-webkit-transform: translate3d(-200%, 0, 0);
+ 	-moz-transform: translate(-200%, 0);
+ 	-ms-transform: translate(-200%, 0);
+ 	-o-transform: translate(-200%, 0);
+ 	transform: translate3d(-200%, 0, 0);
+ 	height:0;
+}
