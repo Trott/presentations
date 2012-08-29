@@ -153,9 +153,14 @@
     <div class="deck-notes">
         <ul>
             <li>1.69s compared to over 2s</li>
-            <li>http://rjf-io2012.appspot.com/#27</li> 
+            <li>I started with this: <a target="_blank" href="http://rjf-io2012.appspot.com/#27">http://rjf-io2012.appspot.com/#27</a></li>
+            <li>defers not just execution <b>but also download</b> (unlike defer or async)</li>
+            <li>that's good if the mobile device only has a finite number of connections (it does) and you want to make
+                sure you're not wasting one that could be serving something the user will actually see</li>
+            <li>Steve Souders's Control.JS does that too, 
+                but only parses/executes when asked, so that's cool for more control</li>
             <li>if you don't like this and Steve Souders's Control.JS is overkill then just put scripts at bottom</li>
-            <li>perhaps the secret sauce here: doesn't delay load event the way defer does</li>
+            <li>also perhaps the secret sauce here: doesn't delay load event the way defer does</li>
         </ul>
 </section>
 <section class="slide">
