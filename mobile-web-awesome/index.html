@@ -158,7 +158,8 @@
             <li>that's good if the mobile device only has a finite number of connections (it does) and you want to make
                 sure you're not wasting one that could be serving something the user will actually see</li>
             <li>Steve Souders's Control.JS does that too, 
-                but only parses/executes when asked, so that's cool for more control</li>
+                but only parses/executes when asked, so that's cool for more control. It downloads with an alternate
+                type, and then changes the type to text/javascript</li>
             <li>if you don't like this and Steve Souders's Control.JS is overkill then just put scripts at bottom</li>
             <li>also perhaps the secret sauce here: doesn't delay load event the way defer does</li>
             <li>another technique: load JS in script tags but comment the whole block out. if needed, eval string
