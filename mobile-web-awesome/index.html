@@ -31,199 +31,284 @@
 
 <body class="deck-container">
 
-<!-- Begin slides -->
-<section class="slide" id="title-slide">
-    <div class="vcenter">
-        <h1>Native App Awesomeness</h1>
-        <div>(without the native app)</div>
-    </div>
-</section>
+    <!-- Begin slides -->
+    <section class="slide" id="title-slide">
+        <div class="vcenter">
+            <h1>Native App Awesomeness</h1>
+            <div>(without the native app)</div>
+        </div>
+    </section>
 
-<section class="slide">
-    <h2>Rich Trott</h2>
-    <ul>
-        <li>UCSF Center for Knowledge Management</li>
-        <li>Twitter: <a target="_blank" href="https://twitter.com/trott">@trott</a></li>
-        <li>GitHub: <a target="_blank" href="http://trott.github.com/">http://trott.github.com/</a></li>
-        <li><a target="_blank" href="http://trott.github.com/presentations/mobile-web-awesome">Slides</a> are available from the GitHub page</li>
-    </ul>
-</section>
-
-<section class="slide">
-    <h2>.edu Mobile Web Performance</h2>
-    <figure>
-        <img src=images/edumobilewebloadtimes.png alt="">
-    </figure>
-    <div class="deck-notes">
-        Check out Steve Souders' I/O talk explaining why performance matters (Google/Bing/Yahoo!/Shopzilla experiments) https://developers.google.com/events/io/sessions/gooio2012/219/
-    </div>
-</section>
-
-<section class="slide">
-    <h2>.edu Mobile Web Performance</h2>
-    <table>
-        <tr>
-            <th>Min.</th>
-            <th>1st Qu.</th>
-            <th>Median</th>
-            <th>Mean</th>
-            <th>3rd Qu.</th>
-            <th>Max.</th>
-        </tr>
-        <tr>
-            <td>0.586s</td>
-            <td>1.778s</td>
-            <td class="highlight">2.565s</td>
-            <td>3.183s</td>
-            <td>3.554s</td>
-            <td>36.307s</td>
-        </tr>
-    </table>
-    <div class="deck-notes">
+    <section class="slide">
+        <h2>Rich Trott</h2>
         <ul>
-            <li>Min.:  .586 <a target="_blank" href="images/wvulib.jpg">http://m.lib.wvu.edu/</a></li>
-            <li>1st Qu.:  1.778 <a target="_blank" href="images/stcloud.jpg">http://m.stcloudstate.edu/</a></li>
-            <li>Median: 2.565 <a target="_blank" href="images/ttu.jpg">http://mobile.ttu.edu/</a> (Blackboard)</li>
-            <li>Mean: 3.183 ~ <a target="_blank" href="images/bloomu.jpg">http://mobile.bloomu.edu/</a> (Kurogo)</li>
-            <li>3rd Qu.: 3.554 <a target="_blank" href="images/nu.jpg">http://m.nu.edu/</a></li>
-            <li>Max.: 36.307 <a target="_blank" href="images/uaf.jpg">http://www.uaf.edu/mobile/</a> responsive which tends to fare poorly on initial load although sometimes does a little better when cached, this one is 47 requests totalling 1.169 Mb. Not the worst by a long shot, though:  
-                <ul>
-                    <li>m.providence.edu (319/322) 119 requests 1.644 Mb 
-                    <li>wofford.edu (315/322) 27 requests 4.112 Mb
-                    <li>wvutoday.wvu.edu is 58 requests and 1.730 Mb
-                </ul>
-            </li>
-            <li>UCSF 104/322</li>
-            <li>Berkeley 247/322</li>
-            <li>UCLA 254/322</li>
-            <li>UCSD 264/322</li>
+            <li>UCSF Center for Knowledge Management</li>
+            <li>Twitter: <a target="_blank" href="https://twitter.com/trott">@trott</a></li>
+            <li>GitHub: <a target="_blank" href="http://trott.github.com/">http://trott.github.com/</a></li>
+            <li><a target="_blank" href="http://trott.github.com/presentations/mobile-web-awesome">Slides</a> are available from the GitHub page</li>
         </ul>
-    </div>
-</section>
+    </section>
 
-<section class="slide">
-    <h2>Performance Optimization</h2>
-    <blockquote>
-        Optimize what is most important, not what is most interesting.
-    </blockquote>
-    <cite>I don't remember who more-or-less said the above. If you know, tell me.</cite>
-</section>
-<section class="slide">
-    <div class="vcenter">
-        <h1>Things that mattered</h1>
-        <div>(for my site, YMMV)</div>
-    </div>
-</section>
-<section class="slide">
-    <div class="vcenter">
-        <h1>HTTP compression</h1>
-        <div>mod_deflate</div>
-    </div>
-</section>
-<section class="slide">
-    <div class="vcenter">
-        <h1>Optimize images</h1>
-        <div>ImageOptim</div>
-    </div>
-</section>
-<section class="slide">
-    <h1>Eliminate redirects</h1>
-</section>
-<section class="slide">
-    <div class="vcenter">
-        <h1>Preload large CSS images</h1>
-        <pre><code>&lt;img&nbsp;style="display:none"&nbsp;alt=""&nbsp;src="huge.png"&gt;</code></pre>
-    </div>
-</section>
-<section class="slide">
-    <div class="vcenter">
-        <h1>Remove unused JS code</h1>
-        <div>Customize Modernizr</div>
-    </div>
-</section>
-<section class="slide">
-    <div class="vcenter">
-        <h1>Defer JS</h1>
-<pre><code>window.onload = function () {
-    var deferred = document.createElement('script');
-    deferred.src = 'my.js';
-    document.body.appendChild(deferred);
-}</code></pre>
-    </div>
-    <div class="deck-notes">
-        <ul>
-            <li>1.69s compared to over 2s</li>
-            <li>I started with this from Ryan Fioravanti: <a target="_blank" href="http://rjf-io2012.appspot.com/#27">http://rjf-io2012.appspot.com/#27</a></li>
-            <li>defers not just execution <strong>but also download</strong> (unlike defer or async)</li>
-            <li>that's good if the mobile device only has a finite number of connections (it does) and you want to make
-                sure you're not wasting one that could be serving something the user will actually see</li>
-            <li>Steve Souders's Control.JS does that too, 
-                but only parses/executes when asked, so that's cool for more control. It downloads with an alternate
-                type, and then changes the type to text/javascript</li>
-            <li>if you don't like this and Steve Souders's Control.JS is overkill then just put scripts at bottom</li>
-            <li>also perhaps the secret sauce here: doesn't delay load event the way defer does</li>
-            <li>another technique: load JS in script tags but comment the whole block out. if needed, eval string
-                with the comment delimiters stripped</li>
-        </ul>
-</section>
-<section class="slide">
-    <div class="vcenter">
-        <h1>Things that didn't matter</h1>
-        <div>(for my site, YMMV)</div>
-    </div>
-</section>
-<section class="slide">
-    <h1>HTTP Keep-Alives</h1>
-</section>
-<section class="slide">
-    <h1>Spriting images</h1>
-</section>
+    <section class="slide">
+        <h2>.edu Mobile Web Performance</h2>
+        <figure>
+            <img src=images/edumobilewebloadtimes.png alt="">
+        </figure>
+        <div class="deck-notes">
+            Check out Steve Souders' I/O talk explaining why performance matters (Google/Bing/Yahoo!/Shopzilla experiments) https://developers.google.com/events/io/sessions/gooio2012/219/
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>.edu Mobile Web Performance</h2>
+        <table>
+            <tr>
+                <th>Min.</th>
+                <th>1st Qu.</th>
+                <th>Median</th>
+                <th>Mean</th>
+                <th>3rd Qu.</th>
+                <th>Max.</th>
+            </tr>
+            <tr>
+                <td>0.586s</td>
+                <td>1.778s</td>
+                <td class="highlight">2.565s</td>
+                <td>3.183s</td>
+                <td>3.554s</td>
+                <td>36.307s</td>
+            </tr>
+        </table>
+        <div class="deck-notes">
+            <ul>
+                <li>Min.:  .586 <a target="_blank" href="images/wvulib.jpg">http://m.lib.wvu.edu/</a></li>
+                <li>1st Qu.:  1.778 <a target="_blank" href="images/stcloud.jpg">http://m.stcloudstate.edu/</a></li>
+                <li>Median: 2.565 <a target="_blank" href="images/ttu.jpg">http://mobile.ttu.edu/</a> (Blackboard)</li>
+                <li>Mean: 3.183 ~ <a target="_blank" href="images/bloomu.jpg">http://mobile.bloomu.edu/</a> (Kurogo)</li>
+                <li>3rd Qu.: 3.554 <a target="_blank" href="images/nu.jpg">http://m.nu.edu/</a></li>
+                <li>Max.: 36.307 <a target="_blank" href="images/uaf.jpg">http://www.uaf.edu/mobile/</a> responsive which tends to fare poorly on initial load although sometimes does a little better when cached, this one is 47 requests totalling 1.169 Mb. Not the worst by a long shot, though:  
+                    <ul>
+                        <li>m.providence.edu (319/322) 119 requests 1.644 Mb</li> 
+                        <li>wofford.edu (315/322) 27 requests 4.112 Mb</li>
+                        <li>wvutoday.wvu.edu is 58 requests and 1.730 Mb</li>
+                    </ul>
+                </li>
+                <li>UCSF 104/322</li>
+                <li>Berkeley 247/322</li>
+                <li>UCLA 254/322</li>
+                <li>UCSD 264/322</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>.edu Mobile vs. Top Web Sites</h2>
+        <p>It's apples and oranges (top sites are not necessarily mobile etc.), but just to get an idea of what's "normal"...</p>
+        <table>
+            <tr>
+                <th></th>
+                <th>Min.</th>
+                <th>1st Qu.</th>
+                <th>Median</th>
+                <th>Mean</th>
+                <th>3rd Qu.</th>
+                <th>Max.</th>
+            </tr>
+            <tr>
+                <th>.edu</th>
+                <td>0.586s</td>
+                <td>1.778s</td>
+                <td class="highlight">2.565s</td>
+                <td>3.183s</td>
+                <td>3.554s</td>
+                <td>36.307s</td>
+            </tr>
+            <tr>
+                <th>top</th>
+                <td>0.570s</td>
+                <td>2.870s</td>
+                <td class="highlight">5.129s</td>
+                <td>7.798s</td>
+                <td>8.920s</td>
+                <td>60.002s</td>
+            </tr>
+        </table>
+        <div class="deck-notes">
+            Top sites from mobile.httparchive.org data dump.
+            <ul>
+                <li>Min.:  .570 www.megaupload.com</li>
+                <li>1st Qu.:  1.778 www.subito.it</li>
+                <li>Median: 2.870 www.free.fr</li>
+                <li>Mean: 7.798 www.bhaskar.com</li>
+                <li>3rd Qu.: 8.920 www.tabnak.ir</li>
+                <li>Max.: 60.002 www.pcauto.com.cn</li>
+            </ul>
+            Mobile .edu numbers don't suck. Why is that? (Likely answer: Our sites don't do that much.)
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Performance Optimization</h2>
+        <blockquote>
+            Optimize what is most important, not what is most interesting.
+            <cite>I don't remember who said this. If you know, tell me.</cite>
+        </blockquote>
+    </section>
+
+    <section class="slide">
+        <h2>Performance Optimization</h2>
+        <blockquote>
+            Don't do faith-based optimizations. Measure the results.
+            <cite>Me</cite>
+        </blockquote>
+    </section>
+
+    <section class="slide">
+        <div class="vcenter">
+            <h1>Things that mattered</h1>
+            <div>(for my site, YMMV)</div>
+        </div>
+    </section>
+    <section class="slide">
+        <h2>Things that mattered</h2>
+        <div class="vcenter">
+            <h1>HTTP compression</h1>
+            <div>mod_deflate</div>
+        </div>
+    </section>
+    <section class="slide">
+        <h2>Things that mattered</h2>
+        <div class="vcenter">
+            <h1>Optimize images</h1>
+            <div>ImageOptim</div>
+        </div>
+    </section>
+    <section class="slide">
+        <h2>Things that mattered</h2>
+        <h1>Eliminate redirects</h1>
+        <div class="deck-notes">
+            <ul>
+                <li>iPhone loading m.ucsf.edu/library is 2.439s (really, that long?)</li>
+                <li>iPhone being redirected to the same place by going to library.ucsf.edu is 5.063s</li>
+            </ul>
+        </div>
+    </section>
+    <section class="slide">
+        <h2>Things that mattered</h2>
+        <div class="vcenter">
+            <h1>Preload large CSS images</h1>
+            <pre><code>&lt;img&nbsp;style="display:none"&nbsp;alt=""&nbsp;src="huge.png"&gt;</code></pre>
+        </div>
+        <div class="deck-notes">
+            Don't wait for DOM to be loaded, CSS to load and be parsed and a rule to match before the image is loaded.
+        </div>
+    </section>
+    <section class="slide">
+        <h2>Things that mattered</h2>
+        <div class="vcenter">
+            <h1>Remove unused JS code</h1>
+            <div>Customize Modernizr</div>
+        </div>
+    </section>
+    <section class="slide">
+        <h2>Things that mattered</h2>
+        <div class="vcenter">
+            <h1>Defer JS</h1>
+            <pre><code>window.onload = function () {
+                var deferred = document.createElement('script');
+                deferred.src = 'my.js';
+                document.body.appendChild(deferred);
+            }</code></pre>
+        </div>
+        <div class="deck-notes">
+            <ul>
+                <li>1.69s compared to over 2s</li>
+                <li>I started with this from Ryan Fioravanti: <a target="_blank" href="http://rjf-io2012.appspot.com/#27">http://rjf-io2012.appspot.com/#27</a></li>
+                <li>defers not just execution <strong>but also download</strong> (unlike defer or async)</li>
+                <li>that's good if the mobile device only has a finite number of connections (it does) and you want to make sure you're not wasting one that could be serving something the user will actually see</li>
+                <li>Steve Souders's Control.JS does that too, but only parses/executes when asked, so that's cool for more control. It downloads with an alternate type, and then changes the type to text/javascript</li>
+                <li>if you don't like this and Steve Souders's Control.JS is overkill then just put scripts at bottom</li>
+                <li>also perhaps the secret sauce here: doesn't delay load event the way defer does</li>
+                <li>another technique: load JS in script tags but comment the whole block out. if needed, eval string with the comment delimiters stripped</li>
+            </ul>
+        </div>
+    </section>
+    <section class="slide">
+        <div class="vcenter">
+            <h1>Things that didn't matter</h1>
+            <div>(for my site, YMMV)</div>
+        </div>
+    </section>
+    <section class="slide">
+        <h2>Things that didn't matter (for my site)</h2>
+        <h1>HTTP Keep-Alives</h1>
+    </section>
+    <section class="slide">
+        <h2>Things that didn't matter (for my site)</h2>
+        <h1>Spriting images</h1>
+    </section>
+ 
+    <section class="slide">
+        <h1>Awesomeness is not just about performance!</h1>
+    </section>
+
+    <section class="slide">
+        <div class="vcenter">
+            <h1>HTML5 Offline Appcache</h1>
+            <div>(well, yeah, that's about performance)</div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="vcenter">
+            <h1>HTML5 Offline Appcache</h1>
+            <div>(but it's also about offline availability!)</div>
+        </div>
+    </section>
+
+    <!-- deck.navigation snippet -->
+    <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+    <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+    <!-- deck.status snippet -->
+    <p class="deck-status">
+        <span class="deck-status-current"></span>
+        /
+        <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+        <label for="goto-slide">Go to slide:</label>
+        <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+        <datalist id="goto-datalist"></datalist>
+        <input type="submit" value="Go">
+    </form>
+
+    <!-- deck.hash snippet -->
+    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
 
-<!-- deck.navigation snippet -->
-<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
-<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../jquery-1.7.min.js"><\/script>')</script>
 
-<!-- deck.status snippet -->
-<p class="deck-status">
-    <span class="deck-status-current"></span>
-    /
-    <span class="deck-status-total"></span>
-</p>
+    <!-- Deck Core and extensions -->
+    <script src="../core/deck.core.js"></script>
+    <script src="../extensions/hash/deck.hash.js"></script>
+    <script src="../extensions/menu/deck.menu.js"></script>
+    <script src="../extensions/goto/deck.goto.js"></script>
+    <script src="../extensions/status/deck.status.js"></script>
+    <script src="../extensions/navigation/deck.navigation.js"></script>
+    <script src="../extensions/scale/deck.scale.js"></script>
+    <script src="../extensions/clone/deck.clone.js"></script>
+    <script src="../extensions/notes/deck.notes.js"></script>
 
-<!-- deck.goto snippet -->
-<form action="." method="get" class="goto-form">
-    <label for="goto-slide">Go to slide:</label>
-    <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
-    <datalist id="goto-datalist"></datalist>
-    <input type="submit" value="Go">
-</form>
-
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
-
-
-<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
-<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
-<script>window.jQuery || document.write('<script src="../jquery-1.7.min.js"><\/script>')</script>
-
-<!-- Deck Core and extensions -->
-<script src="../core/deck.core.js"></script>
-<script src="../extensions/hash/deck.hash.js"></script>
-<script src="../extensions/menu/deck.menu.js"></script>
-<script src="../extensions/goto/deck.goto.js"></script>
-<script src="../extensions/status/deck.status.js"></script>
-<script src="../extensions/navigation/deck.navigation.js"></script>
-<script src="../extensions/scale/deck.scale.js"></script>
-<script src="../extensions/clone/deck.clone.js"></script>
-<script src="../extensions/notes/deck.notes.js"></script>
-
-<!-- Initialize the deck -->
-<script>
-$(function() {
-    $.deck('.slide');
-});
-</script>
-
+    <!-- Initialize the deck -->
+    <script>
+    $(function() {
+        $.deck('.slide');
+    });
+    </script>
 </body>
 </html>
