@@ -263,7 +263,7 @@
         <h2>Things that didn't matter (for my site)</h2>
         <h1>Spriting images</h1>
     </section>
- 
+
     <section class="slide">
         <h1>Awesomeness is not just about performance!</h1>
     </section>
@@ -284,12 +284,17 @@
 
     <section class="slide">
         <h1><span class="warning">Warning:</span> Appcache hates responsive images!</h1>
-    </section>
+        <div class="deck-notes">
+            For an explanation, see "Gotcha #6" of Jake Archibald's
+            <a target="_blank" href="http://www.alistapart.com/articles/application-cache-is-a-douchebag/">"Application
+                Cache is a Douchebag"</a>.
+            </div>
+        </section>
 
-    <section class="slide">
-        <div class="vcenter">
-        <h1>Tried to fix it!</h1>
-            <ul><li>Pickyfill Demo:
+        <section class="slide">
+            <div class="vcenter">
+                <h1>Tried to fix it!</h1>
+                <ul><li>Pickyfill Demo:
                     <a target="_blank" href="http://trott.github.com/pickyfill">http://trott.github.com/pickyfill</a>
                 </li>
                 <li>Pickyfill Project Page:
@@ -317,13 +322,13 @@
         <div class="vcenter">
             <h1>LightningTouch</h1>
             <ul><li>Demo:
-                    <a target="_blank" 
-                        href="http://trott.github.com/LightningTouch">http://trott.github.com/LightningTouch</a>
-                </li>
-                <li>Project Page:
-                    <a target="_blank"
-                        href="https://github.com/trott/LightningTouch">https://github.com/trott/LightningTouch</a>
-                </li>
+                <a target="_blank" 
+                href="http://trott.github.com/LightningTouch">http://trott.github.com/LightningTouch</a>
+            </li>
+            <li>Project Page:
+                <a target="_blank"
+                href="https://github.com/trott/LightningTouch">https://github.com/trott/LightningTouch</a>
+            </li>
         </div>
     </section>
 
@@ -346,8 +351,9 @@
             <h1>A typical .edu mobile site loads in 2.5s.</h1>
             Do better than that.
         </div>
-        <div class="deck-notes">Yes, I'm simplifying here. This is an iPhone over Wi-Fi based on the test results 
-            cited earlier, done using webpagetest.org. Obviously, if you load over 3G, it will be slower, etc.</div>
+        <div class="deck-notes">
+            Yes, I'm simplifying here. This is an iPhone over Wi-Fi based on the test results cited earlier, done using webpagetest.org. Obviously, if you load over 3G, it will be slower, etc.
+        </div>
     </section>
 
     <section class="slide">
@@ -357,52 +363,53 @@
         </div>
         <div class="deck-notes">Repeat from previous slide's notes:
             Yes, I'm simplifying here. This is an iPhone over Wi-Fi based on the test results 
-            cited earlier, done using webpagetest.org. Obviously, if you load over 3G, it will be slower, etc.</div>
-    </section>
+            cited earlier, done using webpagetest.org. Obviously, if you load over 3G, it will be slower, etc.
+        </div>
+        </section>
 
-    <!-- deck.navigation snippet -->
-    <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
-    <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+        <!-- deck.navigation snippet -->
+        <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+        <a href="#" class="deck-next-link" title="Next">&#8594;</a>
 
-    <!-- deck.status snippet -->
-    <p class="deck-status">
-        <span class="deck-status-current"></span>
-        /
-        <span class="deck-status-total"></span>
-    </p>
+        <!-- deck.status snippet -->
+        <p class="deck-status">
+            <span class="deck-status-current"></span>
+            /
+            <span class="deck-status-total"></span>
+        </p>
 
-    <!-- deck.goto snippet -->
-    <form action="." method="get" class="goto-form">
-        <label for="goto-slide">Go to slide:</label>
-        <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
-        <datalist id="goto-datalist"></datalist>
-        <input type="submit" value="Go">
-    </form>
+        <!-- deck.goto snippet -->
+        <form action="." method="get" class="goto-form">
+            <label for="goto-slide">Go to slide:</label>
+            <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+            <datalist id="goto-datalist"></datalist>
+            <input type="submit" value="Go">
+        </form>
 
-    <!-- deck.hash snippet -->
-    <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+        <!-- deck.hash snippet -->
+        <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
 
-    <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
-    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../jquery-1.7.min.js"><\/script>')</script>
+        <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+        <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../jquery-1.7.min.js"><\/script>')</script>
 
-    <!-- Deck Core and extensions -->
-    <script src="../core/deck.core.js"></script>
-    <script src="../extensions/hash/deck.hash.js"></script>
-    <script src="../extensions/menu/deck.menu.js"></script>
-    <script src="../extensions/goto/deck.goto.js"></script>
-    <script src="../extensions/status/deck.status.js"></script>
-    <script src="../extensions/navigation/deck.navigation.js"></script>
-    <script src="../extensions/scale/deck.scale.js"></script>
-    <script src="../extensions/clone/deck.clone.js"></script>
-    <script src="../extensions/notes/deck.notes.js"></script>
+        <!-- Deck Core and extensions -->
+        <script src="../core/deck.core.js"></script>
+        <script src="../extensions/hash/deck.hash.js"></script>
+        <script src="../extensions/menu/deck.menu.js"></script>
+        <script src="../extensions/goto/deck.goto.js"></script>
+        <script src="../extensions/status/deck.status.js"></script>
+        <script src="../extensions/navigation/deck.navigation.js"></script>
+        <script src="../extensions/scale/deck.scale.js"></script>
+        <script src="../extensions/clone/deck.clone.js"></script>
+        <script src="../extensions/notes/deck.notes.js"></script>
 
-    <!-- Initialize the deck -->
-    <script>
-    $(function() {
-        $.deck('.slide');
-    });
-    </script>
-</body>
-</html>
+        <!-- Initialize the deck -->
+        <script>
+        $(function() {
+            $.deck('.slide');
+        });
+        </script>
+    </body>
+    </html>
