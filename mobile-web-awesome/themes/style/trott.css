@@ -83,6 +83,9 @@
   border: 1px solid;
   text-align: center;
 }
+.deck-container .slide li {
+  list-style-position: inside;
+}
 .deck-container .deck-prev-link, .deck-container .deck-next-link {
   background: #f0a;
   text-shadow: 0 0 3px #fff;

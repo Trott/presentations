@@ -96,6 +96,10 @@
 			border: 1px solid;
 			text-align: center;
 		}
+
+		li {
+			list-style-position:inside;
+		}
 	}
 	
 	.deck-prev-link, .deck-next-link {
