@@ -10,6 +10,10 @@
 .deck-container .slide .highlight {
   background-color: #555;
 }
+.deck-container .slide .warning {
+  color: red;
+  text-shadow: 0 0 50px red, 0 0 3px #fff;
+}
 .deck-container .slide h1 {
   color: #0af;
   font-weight: normal;
