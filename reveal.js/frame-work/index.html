@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>A brief history of UCSF and mobile web frameworks</title>
+
+    <base href="../" target="_blank">
+    <meta name="author" content="Rich Trott">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Override stuff here -->
+    <link rel="stylesheet" href="css/custom/trott.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+    document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <p>What UCSF has been doing with mobile web frameworks...</p>
+                    <p>
+                        <small>...because I couldn't think of a better title.</small>
+                    </p>
+                </section>
+
+                <section>
+                    <p>
+                        Rich Trott<br/>
+                        <a href="http://library.ucsf.edu/">UCSF Library</a><br/>
+                        Twitter: <a href="https://twitter.com/trott">@trott</a><br/>
+                        GitHub: <a href="http://trott.github.com">http://trott.github.com</a>
+                    </p>
+                </section>
+
+                <section>
+                    <p>Why are we even talking about this?</p>
+                    <aside class="notes"><p>I'm going to focus on frameworks and technology because talking about is easy and fun. The hard parts of an edu mobile site tend to be insuring high-quality content, how to do user testing, how to measure engagement, getting high-quality content, how to keep the content and experience fresh and engaging, how to keep the content from appearing dated six months from now, and content. Whether to use Kurogo or jQuery Mobile is, comparatively speaking, unimportant. It's an implementation detail.<p><p>With that said, let's get down to the unimportant stuff.</aside>
+                </section>
+
+                <section>
+                    <p>
+                        <a href="http://www.youtube.com/watch?v=wLUSNxxq3cc">Check out our mobile web performance work.</a>
+                    </p>
+                    <p><small><a href="http://bit.ly/PNjC3s">http://bit.ly/PNjC3s</a></small></p>
+                    <p><small><small>Specifics start at <a href="http://www.youtube.com/watch?v=wLUSNxxq3cc#t=8m24s">8:24.</a></small></small></p>
+
+                </section>
+
+                <section>
+                    <p><a href="http://m.ucsf.edu/">m.ucsf.edu</a></p>
+                    <ul>
+                        <li class="fragment">CodeIgniter</li>
+                        <li class="fragment"><strike>CodeIgniter</strike> MWF
+                            <ul>
+                                <li class="fragment">AppCache handler</li>
+                                <li class="fragment">Automated tests</li>
+                            </ul>
+                        </li>
+                        <li class="fragment"><a href="https://github.com/trott/LightningTouch">Lightning Touch</a></li>
+                        <li class="fragment"><strike>CodeIgniter</strike> <strike>MWF</strike> <span>MWFish</span></li>
+                    </ul>
+                    <aside class="notes">UCSF's initial mobile web site launched in spring 2010. It was put together using CodeIgniter, an MVC web framework in PHP. After reviewing UC Mobile Framework, Kurogo, and jQuery Mobile, we moved our mobile web to the UC Mobile Web Framework and contributed code for features such as their AppCache handler for offline use and automated acceptance tests. In an effort to make our mobile web experience as performant as possible, we also created small but useful tools like the open source Lightning Touch library (go to trott.github.com). Over time, our site has diverged sufficiently from MWF that we kinda sorta aren't really running MWF. In particular, we could not countenance the performance hit of what the MWF developers refer to as the Device Telemetry Stack or DTS. Removing it from our instance resulted in a cascade effect of MWF code being disabled or removed from our site.</aside>
+                </section>
+
+                <section>
+                    <p>UCSF Mobile native app (iOS, Android)</p>
+                    <ul>
+                        <li class="fragment">Blackboard Mobile</li>
+                        <li class="fragment"><strike>Blackboard Mobile</strike> MWF</li>
+                    </ul>
+                    <aside class="notes">We used Blackboard to create our initial UCSF Mobile app. Subsequently, we explored making native apps available via PhoneGap and Appcelerator Titanium, but at the time, the technology was sufficiently immature that it made sense to use the native wrappers in UC Mobile Framework instead. This is what we are currently using.</aside>
+                </section>
+
+                <section>
+                    <p>General Directions</p>
+                </section>
+
+                <section>
+                    <div class="fragment shrink fade-out">Server Technology</div>
+                    <div class="fragment grow">Client Technology</div>
+                    <aside class="notes">Broadly speaking, we're moving away from a reliance on server-side logic (which is pretty central to UC Mobile Framework and Kurogo implementations) and towards putting the logic on the client end.</aside>
+                </section> 
+                <section>
+                    <div class="fragment shrink fade-out">Server Libraries (e.g., SimplePie)</div>
+                    <div class="fragment grow">Templates (e.g., Mustache)</div>
+                    <aside class="notes"> For example, our news readers rely on client-side JS templating and read items directly from RSS feeds rather than relying on aserver-side library to parse and render from RSS.</aside>
+                </section>
+                <section>
+
+                            <div class="fragment shrink fade-out">Server-side caching</div>
+                            <div class="fragment grow">AppCache &amp; LocalStorage</div>
+                            <aside class="notes">The client caches the RSS content in localStorage, enabling offline access. This is useful for events calendars that are served via RSS, for example.</aside>
+                </section>
+                <section>
+                    <p>Things we're watching or wish we had more time/resources to work with</p>
+                    <p><small class="fragment">Or: Obligatory buzzwords legally required to be in any presentation about mobile web</small></p>
+                </section>
+                <section>
+                    <p>JS MV* Frameworks</p>
+                    <aside class="notes">Ultimately, we may may choose to go with one of the many MV* JS frameworks...</aside>
+                </section>
+                <section>
+                    <p>Responsive Web Design</p><p class="fragment"><small>(but please do it in a performant way)</small></p></li>
+                    <aside class="notes">
+                 ...although, as with Responsive Web Design, it's easy to do in a way that hurts web performance. And performance is job 1.</aside>  
+                </section>
+
+                <section>
+                    <p>PhoneGap/Cordova</p>
+                    <aside class="notes">On the native wrapper side, we'll probably give PhoneGap another look.</aside>
+                </section>
+
+                <section>
+                    <p>Node.js</p>
+                    <aside class="notes">And we're already using Node.js tools like Grunt. Node shows a lot of promise for when the pendulum inevitably swings back towards server-side technology.</aside>
+                </section>
+
+                <section>
+                    <p>A confession</p>
+                    <aside class="notes">Our forward movement in the mobile web space has slowed somewhat of late as we do not have resources dedicated to it, but I'm optimistic that we'll see some change there.</aside>
+                </section>
+
+                <section>
+                    <h2>Thanks!</h2>
+                    <p>
+                        Rich Trott<br/>
+                        <a href="http://library.ucsf.edu/">UCSF Library</a><br/>
+                        Twitter: <a href="https://twitter.com/trott">@trott</a><br/>
+                        GitHub: <a href="http://trott.github.com">http://trott.github.com</a>
+                    </p>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: 'night', // available themes are in /css/theme
+                transition: 'concave', // default/cube/page/concave/zoom/linear/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                    ]
+                });
+
+</script>
+
+</body>
+</html>
